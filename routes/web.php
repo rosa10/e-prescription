@@ -18,3 +18,4 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [LoginController::class,'index']);
 Route::post('/login', [LoginController::class,'authenticate']);
 Route::get('/dashboard',[DashboardController::class,'index']);
+Route::post('/proses', [DashboardController::class,'store']);
