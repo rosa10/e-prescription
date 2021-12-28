@@ -64,3 +64,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Instalasi Aplikasi
+
+1. Import Database Prescription
+2. Download aplikasi
+3. Masuk Command Prompt
+4. Masuk ke folder XAMPP
+5. Mulai proses instalasi Laravel
+6. Cek instalasi Laravel di web browser
