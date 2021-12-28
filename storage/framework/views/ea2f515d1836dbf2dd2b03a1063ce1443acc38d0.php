@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Dashboard Template · Bootstrap v5.1</title>
+    <title>E-Prescription</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
 
@@ -61,7 +64,6 @@
               Dashboard
             </a>
           </li>
-          
         </ul>
       </div>
     </nav>
@@ -81,8 +83,56 @@
         </div>
       </div>
 
-      <form action=""></form>
+<form action="/proses" method="post">
+    <?php echo csrf_field(); ?>
+    <div class="mb-3 row">
+        <div class="mb-3 row">
+    <label for="pasien" class="col-sm-2 col-form-label" id="pasien" name="pasien" >Pasien</label>
+    <div class="col-sm-10">
+      <input  class="form-control" id="pasien" name="pasien">
+    </div>
+  </div>
   <div class="mb-3 row">
+    <label for="tanggal" class="col-sm-2 col-form-label" id="tanggal" name="tanggal">Tanggal</label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="tanggal">
+    </div>
+          <div class="control-group after-add-more">
+              <label>Jenis Obat</label>
+              <select class="form-control" name="jenis" id="jenis" name="jenis">
+                <option>Racikan</option>
+                <option>Non Racikan</option>
+              </select>
+            <label>Nama Obat</label>
+            <select class="form-control" name="obatalkes_id" id="obatalkes_id" placeholder="Type to search..." id="obatalkes_id" name="obatalkes_id">
+            
+            <?php $__currentLoopData = $obatalkes_m; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $obatalkes_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($obatalkes_m->obatalkes_id); ?>"><?php echo e($obatalkes_m->obatalkes_nama); ?> stok: <?php echo e($obatalkes_m->stok); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+            
+
+            <label>Ketentuan</label>
+            <select class="form-control" list="signa" id="signa_id" placeholder="Type to search..." name="signa_id">
+            
+            <?php $__currentLoopData = $signa_m; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $signa_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($signa_m->signa_id); ?>"><?php echo e($signa_m->signa_nama); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+          
+            <br>
+            <button class="btn btn-success add-more" type="button">
+              <i class="glyphicon glyphicon-plus"></i> Add
+            </button>
+            <hr>
+          </div>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+
+        <div class="copy hide">
+            <div class="control-group">
+              <div class="mb-3 row">
+        <div class="mb-3 row">
     <label for="pasien" class="col-sm-2 col-form-label">Pasien</label>
     <div class="col-sm-10">
       <input  class="form-control" id="pasien">
@@ -93,72 +143,58 @@
     <div class="col-sm-10">
       <input type="date" class="form-control" id="tanggal">
     </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="ket" class="col-sm-2 col-form-label">Jumlah Item</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="ket">
+          <div class="control-group after-add-more">
+               <label>Jenis Obat</label>
+              <select class="form-control"  id="jenis" name="jenis">
+                <option>Racikan</option>
+                <option>Non Racikan</option>
+              </select>
+            <label>Nama Obat</label>
+            <select class="form-control" name="obatalkes_id" id="obatalkes_id" placeholder="Type to search..." id="obatalkes_id" name="obatalkes_id">
+            
+            <?php $__currentLoopData = $obat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $obatalkes_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($obatalkes_m->obatalkes_id); ?>"><?php echo e($obatalkes_m->obatalkes_nama); ?> stok: <?php echo e($obatalkes_m->stok); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+            
+
+            <label>Ketentuan</label>
+            <select class="form-control" list="signa" id="signa_id" placeholder="Type to search..." name="signa_id">
+            
+            <?php $__currentLoopData = $signa; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $signa_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($signa_m->signa_id); ?>"><?php echo e($signa_m->signa_nama); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+              <br>
+              <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+              <hr>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
-<div class="mb-3 row">
-    <label for="exampleDataList" class="form-label">Jenis Obat</label>
-    <div class="col-sm-10">
-      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-<datalist id="datalistOptions">
-  <option value="Non Racikan">
-  <option value="Racikan">
-</datalist>
-<button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-  </div>
+</div>
+<!-- fungsi javascript untuk menampilkan form dinamis  -->
+<!-- penjelasan :
+saat tombol add-more ditekan, maka akan memunculkan div dengan class copy -->
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".add-more").click(function(){ 
+          var html = $(".copy").html();
+          $(".after-add-more").after(html);
+      });
 
-  <div class="mb-3 row">
-    <label for="exampleDataList" class="form-label">Nama Obat</label>
-    <div class="col-sm-10">
-      <input class="form-control" list="nama" id="exampleDataList" placeholder="Type to search...">
-<datalist id="nama">
+      // saat tombol remove dklik control group akan dihapus 
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
+</script>
+</body>
 
-  <?php $__currentLoopData = $obatalkes_m; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $obatalkes_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-  <option value="<?php echo e($obatalkes_m->obatalkes_nama); ?>">stok: <?php echo e($obatalkes_m->stok); ?></option>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-</datalist>
-    </div>
-  </div>
-    <div class="mb-3 row">
-    <label for="exampleDataList" class="form-label">Ketentuan</label>
-    <div class="col-sm-10">
-      <input class="form-control" list="signa" id="exampleDataList" placeholder="Type to search...">
-<datalist id="signa">
-  <?php $__currentLoopData = $signa_m; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $signa_m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-  <option value="<?php echo e($signa_m->signa_nama); ?>">
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-</datalist>
-    </div>
-  </div>
-<div class="mb-3 row">
-    <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
-    <div class="col-sm-10">
-      <input type="int" class="form-control" id="jumlah"
-      
-      >
-    </div>
-  </div>
+  
 
-      
-<?php # membuka tag PHP
 
-$jumlahitem = @$_POST['jumlahitem'];
-$jenis = @$_POST['jenis'];
-
-# jangan lupa tutup tag PHP
-if ($jumlahitem) {
-    echo "<strong>Email:</strong> {$jumlahitem} <br>";
-}
-
-if ($jenis) {
-    echo "<strong>Kata Sandi:</strong> {$jenis} <br>";
-}
-?>
       <h2>Draft Resep</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">

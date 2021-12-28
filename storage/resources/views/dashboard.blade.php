@@ -143,6 +143,32 @@
         </div>
       </div>
 
+<form action="proses.php" method="POST">
+          <div class="control-group after-add-more">
+            <label>Nama</label>
+            <input type="text" name="nama[]" class="form-control">
+            <label>Jenis Kelamin</label>
+            <input type="text" name="jk[]" class="form-control">
+            <label>Alamat</label>
+            <input type="text" name="alamat[]" class="form-control">
+            <label>Jurusan</label>
+            <select class="form-control" name="jurusan[]">
+                <option>Sistem Informasi</option>
+                <option>Informatika</option>
+                <option>Akuntansi</option>
+                <option>DKV</option>
+              </select>
+            <br>
+            <button class="btn btn-success add-more" type="button">
+              <i class="glyphicon glyphicon-plus"></i> Add
+            </button>
+            <hr>
+          </div>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+
+        
+
       <form action=""></form>
   <div class="mb-3 row">
     <label for="pasien" class="col-sm-2 col-form-label">Pasien</label>
